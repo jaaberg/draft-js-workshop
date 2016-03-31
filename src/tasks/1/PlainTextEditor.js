@@ -38,7 +38,6 @@ const styles = {
   editor: {
     border: '1px solid #ccc',
     cursor: 'text',
-    minHeight: 80,
     padding: 10
   },
   button: {

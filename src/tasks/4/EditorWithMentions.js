@@ -16,13 +16,13 @@ class EditorWithMentions extends Component {
 
     const Mention = (props) => {
       const filteredNames = NAMES
-          .filter((name) => name.indexOf(props.decoratedText.slice(1)) > -1)
+          .filter((name) => name.toLowerCase().indexOf(props.decoratedText.slice(1).toLowerCase()) > -1)
           .map((name) => <div>{name}</div>);
 
       return (
         <span style={styles.mention}>
           <span {...props}>{props.children}</span>
-          <div style={styles.mentionSuggestions}>
+          <div contentEditable={false} style={styles.mentionSuggestions}>
             {filteredNames}
           </div>
         </span>

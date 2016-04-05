@@ -10,24 +10,18 @@ class PlainTextEditor extends Component {
     this.logState = () => console.log(this.state.editorState.toJS());
   }
 
-  _handleKeyCommand(command) {
-    const {editorState} = this.state;
-    const newState = RichUtils.handleKeyCommand(editorState, command);
-    if (newState) {
-      this.onChange(newState);
-      return true;
-    }
-    return false;
+  _onBoldClick() {
+    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'));
   }
 
   render() {
     return (
       <div style={styles.root}>
+        <button onClick={this._onBoldClick.bind(this)}>Bold</button>
         <div style={styles.editor} onClick={this.focus}>
           <Editor
             editorState={this.state.editorState}
             onChange={this.onChange}
-            handleKeyCommand={this._handleKeyCommand.bind(this)}
             />
         </div>
         <input

@@ -28,6 +28,7 @@ class PlainTextEditor extends Component {
             editorState={this.state.editorState}
             onChange={this.onChange}
             handleKeyCommand={this._handleKeyCommand.bind(this)}
+            placeholder='Write me something...'
             />
         </div>
         <input

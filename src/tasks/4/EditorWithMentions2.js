@@ -52,6 +52,7 @@ class EditorWithMentions extends Component {
           <Editor
             editorState={this.state.editorState}
             onChange={this.onChange}
+            placeholder='Write me something...'
             />
         </div>
         <input

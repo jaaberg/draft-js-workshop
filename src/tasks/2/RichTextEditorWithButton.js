@@ -13,14 +13,14 @@ class PlainTextEditor extends Component {
   logState = () => console.log(this.state.editorState.toJS());
 
   _onBoldClick() {
-    this.onChange(t(this.state.editorState, 'BOLD'));
+    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'));
   }
 
   render() {
     return (
       <div style={styles.root}>
         <h1>Rich text editor with button</h1>
-        <button onClick={this._onBoldClick}>Bold</button>
+        <button onClick={this._onBoldClick.bind(this)}>Bold</button>
         <div style={styles.editor}>
           <Editor
             editorState={this.state.editorState}

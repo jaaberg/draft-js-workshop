@@ -1,61 +1,45 @@
 import React, { Component } from 'react';
 import {Editor, EditorState, RichUtils} from 'draft-js';
 
+import styles from '../../shared/editor-styles';
+
 class PlainTextEditor extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {editorState: EditorState.createEmpty()};
+  state = {
+    editorState: EditorState.createEmpty()
+  };
 
-    this.onChange = (editorState) => this.setState({editorState});
-    this.logState = () => console.log(this.state.editorState.toJS());
-  }
+  handleEditorStateChange = (editorState) => this.setState({editorState});
 
-  _handleKeyCommand(command) {
+  logState = () => console.log(this.state.editorState.toJS());
+
+  handleKeyCommand = (command) =>  {
     const {editorState} = this.state;
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
-      this.onChange(newState);
+      this.handleEditorStateChange(newState);
       return true;
     }
     return false;
-  }
+  };
 
   render() {
     return (
       <div style={styles.root}>
-        <div style={styles.editor} onClick={this.focus}>
+        <div style={styles.editor}>
           <Editor
             editorState={this.state.editorState}
-            onChange={this.onChange}
-            handleKeyCommand={this._handleKeyCommand.bind(this)}
-            placeholder='Write me something...'
-            />
+            onChange={this.handleEditorStateChange}
+            handleKeyCommand={this.handleKeyCommand}
+            placeholder='Write me something...' />
         </div>
         <input
           onClick={this.logState}
           style={styles.button}
           type="button"
-          value="Log State"
-          />
+          value="Log State" />
       </div>
     );
   }
 }
-
-const styles = {
-  root: {
-    padding: 20,
-    width: 600
-  },
-  editor: {
-    border: '1px solid #ccc',
-    cursor: 'text',
-    padding: 10
-  },
-  button: {
-    marginTop: 10,
-    textAlign: 'center'
-  }
-};
 
 export default PlainTextEditor;

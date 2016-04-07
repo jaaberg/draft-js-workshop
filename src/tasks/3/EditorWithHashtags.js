@@ -1,6 +1,9 @@
-import React, { Component } from 'react';
-import {Editor, EditorState, CompositeDecorator} from 'draft-js';
-import findWithRegex from '../../utils/findWithRegex';
+import React, {Component} from "react";
+import {Editor, EditorState, CompositeDecorator} from "draft-js";
+import findWithRegex from "../../utils/findWithRegex";
+
+import styles from './hashtag-styles';
+import sharedStyles from '../../shared/editor-styles';
 
 const HASHTAG_REGEX = /\#[\w\u0590-\u05ff]+/g;
 
@@ -15,37 +18,30 @@ const Hashtag = (props) => {
 };
 
 class EditorWithHashtags extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    editorState: EditorState.createEmpty(new CompositeDecorator([{
+      strategy: hashtagStrategy,
+      component: Hashtag
+    }]))
+  };
 
-    const compositeDecorator = new CompositeDecorator([
-      {
-        strategy: hashtagStrategy,
-        component: Hashtag
-      }
-    ]);
+  handleEditorStateChange = (editorState) => this.setState({editorState});
 
-    this.state = {
-      editorState: EditorState.createEmpty(compositeDecorator)
-    };
-
-    this.onChange = (editorState) => this.setState({editorState});
-    this.logState = () => console.log(this.state.editorState.toJS());
-  }
+  logState = () => console.log(this.state.editorState.toJS());
 
   render() {
     return (
-      <div style={styles.root}>
-        <div style={styles.editor} onClick={this.focus}>
+      <div style={sharedStyles.root}>
+        <div style={sharedStyles.editor}>
           <Editor
             editorState={this.state.editorState}
-            onChange={this.onChange}
+            onChange={this.handleEditorStateChange}
             placeholder='Write me something...'
             />
         </div>
         <input
           onClick={this.logState}
-          style={styles.button}
+          style={sharedStyles.button}
           type="button"
           value="Log State"
           />
@@ -53,24 +49,5 @@ class EditorWithHashtags extends Component {
     );
   }
 }
-
-const styles = {
-  root: {
-    padding: 20,
-    width: 600
-  },
-  editor: {
-    border: '1px solid #ccc',
-    cursor: 'text',
-    padding: 10
-  },
-  button: {
-    marginTop: 10,
-    textAlign: 'center'
-  },
-  hashtag: {
-    color: '#FF00CC'
-  }
-};
 
 export default EditorWithHashtags;

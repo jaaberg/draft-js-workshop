@@ -15,6 +15,7 @@ class PlainTextEditor extends Component {
   render() {
     return (
       <div style={styles.root}>
+        <h1>Plain text editor</h1>
         <div style={styles.editor}>
           <Editor
             editorState={this.state.editorState}

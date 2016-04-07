@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import {Editor, EditorState, CompositeDecorator} from 'draft-js';
-import findWithRegex from '../../utils/findWithRegex';
-
-import sharedstyles from '../../shared/editor-styles';
-import styles from './mention-styles';
+import React, {Component} from "react";
+import {Editor, EditorState, CompositeDecorator} from "draft-js";
+import findWithRegex from "../../utils/findWithRegex";
+import sharedstyles from "../../shared/editor-styles";
+import styles from "./mention-styles";
 
 const HANDLE_REGEX = /\@[\w]+/g;
 
@@ -20,11 +19,11 @@ const Mention = (props) => {
 
   return (
     <span style={styles.mention}>
-          <span {...props}>{props.children}</span>
-          <div contentEditable={false} style={styles.mentionSuggestions}>
-            {filteredNames}
-          </div>
-        </span>
+      <span {...props}>{props.children}</span>
+      <div contentEditable={false} style={styles.mentionSuggestions}>
+        {filteredNames}
+      </div>
+    </span>
   );
 };
 
@@ -43,19 +42,20 @@ class EditorWithMentions extends Component {
   render() {
     return (
       <div style={sharedstyles.root}>
+        <h1>Editor with mentions</h1>
         <div style={sharedstyles.editor}>
           <Editor
             editorState={this.state.editorState}
             onChange={this.handleEditorStateChange}
             placeholder='Write me something...'
-            />
+          />
         </div>
         <input
           onClick={this.logState}
           style={sharedstyles.button}
           type="button"
           value="Log State"
-          />
+        />
       </div>
     );
   }

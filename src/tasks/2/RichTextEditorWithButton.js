@@ -19,6 +19,7 @@ class PlainTextEditor extends Component {
   render() {
     return (
       <div style={styles.root}>
+        <h1>Rich text editor with button</h1>
         <button onClick={this._onBoldClick}>Bold</button>
         <div style={styles.editor}>
           <Editor

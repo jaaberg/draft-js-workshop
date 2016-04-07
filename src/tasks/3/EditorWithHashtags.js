@@ -32,6 +32,7 @@ class EditorWithHashtags extends Component {
   render() {
     return (
       <div style={sharedStyles.root}>
+        <h1>Editor with hashtags</h1>
         <div style={sharedStyles.editor}>
           <Editor
             editorState={this.state.editorState}

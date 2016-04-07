@@ -7,6 +7,9 @@ import RichTextEditorWithButton from './tasks/1/RichTextEditorWithButton.js';
 import EditorWithHashtags from './tasks/2/EditorWithHashtags.js';
 import EditorWithMentions from './tasks/3/EditorWithMentions.js';
 import EditorUsingMentionPlugin from './tasks/4/EditorUsingMentionPlugin.js';
+import ControlledInput from './meta/ControlledInput';
+import UncontrolledInput from './meta/UncontrolledInput';
+
 
 class App extends Component {
   render() {
@@ -27,6 +30,8 @@ render((
       <Route path="2" component={EditorWithHashtags}/>
       <Route path="3" component={EditorWithMentions}/>
       <Route path="4" component={EditorUsingMentionPlugin}/>
+      <Route path="controlled" component={ControlledInput}/>
+      <Route path="uncontrolled" component={UncontrolledInput}/>
     </Route>
   </Router>
 ), document.getElementById('root'));

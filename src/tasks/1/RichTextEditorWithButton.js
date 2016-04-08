@@ -8,9 +8,13 @@ class PlainTextEditor extends Component {
     editorState: EditorState.createEmpty()
   };
 
-  handleEditorStateChange = (editorState) => this.setState({editorState});
+  focusEditor = () => this.refs.editor.focus();
 
-  logState = () => console.log(this.state.editorState.toJS());
+  handleBoldClick = () => {
+    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'));
+  }
+
+  onChange = (editorState) => this.setState({editorState});
 
   handleKeyCommand = (command) =>  {
     const {editorState} = this.state;
@@ -22,15 +26,19 @@ class PlainTextEditor extends Component {
     return false;
   };
 
+  logState = () => console.log(this.state.editorState.toJS());
+
   render() {
     return (
       <div style={styles.root}>
-        <h1>Rich text editor</h1>
-        <div style={styles.editor}>
+        <h1>Rich text editor with button</h1>
+        <button onClick={this.handleBoldClick}>Bold</button>
+        <div style={styles.editor} onClick={this.focusEditor}>
           <Editor
             editorState={this.state.editorState}
-            onChange={this.handleEditorStateChange}
             handleKeyCommand={this.handleKeyCommand}
+            onChange={this.onChange}
+            ref="editor"
             placeholder='Write me something...' />
         </div>
         <input

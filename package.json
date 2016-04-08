@@ -28,8 +28,8 @@
   },
   "dependencies": {
     "draft-js": "^0.3.0",
-    "react": "^15.0.0-rc.2",
-    "react-dom": "^15.0.0-rc.2",
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0",
     "react-router": "^2.0.1"
   }
 }

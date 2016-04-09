@@ -4,10 +4,10 @@ import findWithRegex from "../../utils/findWithRegex";
 import sharedstyles from "../../shared/editor-styles";
 import styles from "./mention-styles";
 
-const HANDLE_REGEX = /\@[\w]+/g;
+const MENTION_REGEX = /\@[\wæøå]+/g;
 
-function handleStrategy(contentBlock, callback) {
-  findWithRegex(HANDLE_REGEX, contentBlock, callback);
+function mentionStrategy(contentBlock, callback) {
+  findWithRegex(MENTION_REGEX, contentBlock, callback);
 }
 
 const NAMES = ['Martin', 'Marte', 'Jørgen', 'Brynjar', 'Henrik', 'Martinus', 'Markus', 'Ole', 'Rune'];
@@ -30,7 +30,7 @@ const Mention = (props) => {
 class EditorWithMentions extends Component {
   state = {
     editorState: EditorState.createEmpty(new CompositeDecorator([{
-      strategy: handleStrategy,
+      strategy: mentionStrategy,
       component: Mention
     }]))
   };

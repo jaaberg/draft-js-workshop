@@ -12,7 +12,7 @@ class PlainTextEditor extends Component {
 
   handleBoldClick = () => {
     this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'));
-  }
+  };
 
   onChange = (editorState) => this.setState({editorState});
 

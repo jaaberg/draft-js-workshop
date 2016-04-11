@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {Editor, EditorState, RichUtils} from 'draft-js';
+import React, {Component} from "react";
+import {Editor, EditorState} from "draft-js";
 
 import styles from '../../shared/editor-styles';
 
@@ -8,20 +8,25 @@ class PlainTextEditor extends Component {
     editorState: EditorState.createEmpty()
   };
 
-  handleEditorStateChange = (editorState) => this.setState({editorState});
-
   logState = () => console.log(this.state.editorState.toJS());
+
+  handleEditorStateChange = (editorState) => this.setState({editorState});
 
   render() {
     return (
       <div style={styles.root}>
-        <div style={styles.editor} onClick={this.focusEditor}>
+        <h1>Plain text editor</h1>
+        <div style={styles.editor}>
           <Editor
             editorState={this.state.editorState}
             onChange={this.handleEditorStateChange}
-            ref="editor"
             placeholder='Write me something...' />
         </div>
+        <input
+          onClick={this.logState}
+          style={styles.button}
+          type="button"
+          value="Log State" />
       </div>
     );
   }

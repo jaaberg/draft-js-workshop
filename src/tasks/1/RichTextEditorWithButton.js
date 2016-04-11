@@ -11,10 +11,10 @@ class PlainTextEditor extends Component {
   focusEditor = () => this.refs.editor.focus();
 
   handleBoldClick = () => {
-    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'));
+    this.handleEditorStateChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'));
   };
 
-  onChange = (editorState) => this.setState({editorState});
+  handleEditorStateChange = (editorState) => this.setState({editorState});
 
   handleKeyCommand = (command) =>  {
     const {editorState} = this.state;
@@ -37,7 +37,7 @@ class PlainTextEditor extends Component {
           <Editor
             editorState={this.state.editorState}
             handleKeyCommand={this.handleKeyCommand}
-            onChange={this.onChange}
+            onChange={this.handleEditorStateChange}
             ref="editor"
             placeholder='Write me something...' />
         </div>

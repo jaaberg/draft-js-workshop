@@ -1,13 +1,13 @@
 import React, {Component} from "react";
 import {Editor, EditorState, CompositeDecorator} from "draft-js";
-import findWithRegex from "../../utils/findWithRegex";
-import sharedstyles from "../../shared/editor-styles";
+import {findWithRegex} from "../../utils/helpers";
+import sharedStyles from "../../shared/editor-styles";
 import styles from "./mention-styles";
 
-const MENTION_REGEX = /\@[\wæøå]+/g;
+import {NAME_REGEX} from '../../utils/regex';
 
 function mentionStrategy(contentBlock, callback) {
-  findWithRegex(MENTION_REGEX, contentBlock, callback);
+  findWithRegex(NAME_REGEX, contentBlock, callback);
 }
 
 const NAMES = ['Martin', 'Marte', 'Jørgen', 'Brynjar', 'Henrik', 'Martinus', 'Markus', 'Ole', 'Rune'];
@@ -41,9 +41,9 @@ class EditorWithMentions extends Component {
 
   render() {
     return (
-      <div style={sharedstyles.root}>
+      <div style={sharedStyles.root}>
         <h1>Editor with mentions</h1>
-        <div style={sharedstyles.editor}>
+        <div style={sharedStyles.editor}>
           <Editor
             editorState={this.state.editorState}
             onChange={this.handleEditorStateChange}
@@ -52,7 +52,7 @@ class EditorWithMentions extends Component {
         </div>
         <input
           onClick={this.logState}
-          style={sharedstyles.button}
+          style={sharedStyles.button}
           type="button"
           value="Log State"
         />

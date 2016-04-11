@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
-import {Router, Route, IndexRedirect, browserHistory} from 'react-router';
+import {Router, Route, IndexRedirect, browserHistory} from 'react-router/es6';
 
 import PlainTextEditor from './tasks/0/PlainTextEditor.js';
 import RichTextEditorWithButton from './tasks/1/RichTextEditorWithButton.js';

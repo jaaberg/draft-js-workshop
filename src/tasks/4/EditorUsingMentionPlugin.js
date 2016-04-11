@@ -37,7 +37,7 @@ class EditorUsingMentionPlugin extends Component {
     editorState: EditorState.createEmpty()
   };
 
-  onChange = (editorState) => this.setState({editorState});
+  handleEditorStateChange = (editorState) => this.setState({editorState});
 
   render() {
     return (
@@ -46,7 +46,7 @@ class EditorUsingMentionPlugin extends Component {
         <div style={styles.editor}>
           <Editor
             editorState={this.state.editorState}
-            onChange={this.onChange}
+            onChange={this.handleEditorStateChange}
             plugins={[mentionPlugin]}/>
         </div>
       </div>

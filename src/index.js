@@ -8,6 +8,8 @@ import EditorWithHashtags from './tasks/2/EditorWithHashtags.js';
 import EditorWithMentions from './tasks/3/EditorWithMentions.js';
 import EditorUsingMentionPlugin from './tasks/4/EditorUsingMentionPlugin.js';
 
+import 'draft-js/dist/Draft.css';
+
 class App extends Component {
   render() {
     return (

@@ -10,8 +10,13 @@ class PlainTextEditor extends Component {
 
   focusEditor = () => this.refs.editor.focus();
 
-  handleBoldClick = () => {
-    this.handleEditorStateChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'));
+  toggleInlineStyle = (inlineStyle) => {
+    this.handleEditorStateChange(
+      RichUtils.toggleInlineStyle(
+        this.state.editorState,
+        inlineStyle
+      )
+    );
   };
 
   handleEditorStateChange = (editorState) => this.setState({editorState});
@@ -29,13 +34,17 @@ class PlainTextEditor extends Component {
   logState = () => console.log(this.state.editorState.toJS());
 
   render() {
+    const editorState = this.state.editorState;
     return (
       <div style={styles.root}>
         <h1>Rich text editor with button</h1>
-        <button onClick={this.handleBoldClick}>Bold</button>
+        <InlineStyleControls
+          editorState={editorState}
+          onToggle={this.toggleInlineStyle}
+        />
         <div style={styles.editor} onClick={this.focusEditor}>
           <Editor
-            editorState={this.state.editorState}
+            editorState={editorState}
             handleKeyCommand={this.handleKeyCommand}
             onChange={this.handleEditorStateChange}
             ref="editor"
@@ -50,5 +59,52 @@ class PlainTextEditor extends Component {
     );
   }
 }
+
+var INLINE_STYLES = [
+  {label: 'Bold', style: 'BOLD'},
+  {label: 'Italic', style: 'ITALIC'},
+  {label: 'Underline', style: 'UNDERLINE'},
+  {label: 'Monospace', style: 'CODE'}
+];
+
+const InlineStyleControls = (props) => {
+  const {editorState, onToggle} = props;
+  var currentStyle = editorState.getCurrentInlineStyle();
+  
+  return (
+    <div>
+      {INLINE_STYLES.map((type, index) =>
+        <StyleButton
+          active={currentStyle.has(type.style)}
+          label={type.label}
+          onToggle={onToggle}
+          style={type.style}
+          key={index}
+        />
+      )}
+    </div>
+  );
+};
+
+const StyleButton = (props) => {
+  const {onToggle, style, active, label} = props;
+
+  const handleStyleButtonMouseDown = (e) => {
+    e.preventDefault();
+    onToggle(style);
+  };
+
+  let buttonStyle = {backgroundColor: 'grey'};
+
+  if (active) {
+    buttonStyle = {backgroundColor: 'red'};
+  }
+
+  return (
+    <button style={buttonStyle} onMouseDown={handleStyleButtonMouseDown}>
+      {label}
+    </button>
+  );
+};
 
 export default PlainTextEditor;

@@ -15,7 +15,7 @@ const NAMES = ['Martin', 'Marte', 'Jørgen', 'Brynjar', 'Henrik', 'Martinus', 'M
 const Mention = (props) => {
   const filteredNames = NAMES
     .filter((name) => name.toLowerCase().indexOf(props.decoratedText.slice(1).toLowerCase()) > -1)
-    .map((name) => <div>{name}</div>);
+    .map((name, index) => <div key={index}>{name}</div>);
 
   return (
     <span style={styles.mention}>

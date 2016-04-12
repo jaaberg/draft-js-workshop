@@ -27,8 +27,11 @@ class EditorWithHashtags extends Component {
 
   handleEditorStateChange = (editorState) => this.setState({editorState});
 
-  logState = () => console.log(this.state.editorState.toJS());
-
+  logState = (e) => {
+    e.preventDefault();
+    console.log(this.state.editorState.toJS());
+  };
+  
   render() {
     return (
       <div style={sharedStyles.root}>
@@ -37,15 +40,13 @@ class EditorWithHashtags extends Component {
           <Editor
             editorState={this.state.editorState}
             onChange={this.handleEditorStateChange}
-            placeholder='Write me something...'
-            />
+            placeholder='Write me something...' />
         </div>
         <input
-          onClick={this.logState}
+          onMouseDown={this.logState}
           style={sharedStyles.button}
           type="button"
-          value="Log State"
-          />
+          value="Log State" />
       </div>
     );
   }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {Editor, EditorState, RichUtils} from 'draft-js';
 
 import styles from '../../shared/editor-styles';
@@ -31,8 +31,11 @@ class PlainTextEditor extends Component {
     return false;
   };
 
-  logState = () => console.log(this.state.editorState.toJS());
-
+  logState = (e) => {
+    e.preventDefault();
+    console.log(this.state.editorState.toJS());
+  };
+  
   render() {
     const editorState = this.state.editorState;
     return (
@@ -40,8 +43,7 @@ class PlainTextEditor extends Component {
         <h1>Rich text editor with button</h1>
         <InlineStyleControls
           editorState={editorState}
-          onToggle={this.toggleInlineStyle}
-        />
+          onToggle={this.toggleInlineStyle} />
         <div style={styles.editor} onClick={this.focusEditor}>
           <Editor
             editorState={editorState}
@@ -51,7 +53,7 @@ class PlainTextEditor extends Component {
             placeholder='Write me something...' />
         </div>
         <input
-          onClick={this.logState}
+          onMouseDown={this.logState}
           style={styles.button}
           type="button"
           value="Log State" />
@@ -70,7 +72,7 @@ var INLINE_STYLES = [
 const InlineStyleControls = (props) => {
   const {editorState, onToggle} = props;
   var currentStyle = editorState.getCurrentInlineStyle();
-  
+
   return (
     <div>
       {INLINE_STYLES.map((type, index) =>
@@ -79,8 +81,7 @@ const InlineStyleControls = (props) => {
           label={type.label}
           onToggle={onToggle}
           style={type.style}
-          key={index}
-        />
+          key={index} />
       )}
     </div>
   );

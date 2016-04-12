@@ -1,30 +1,28 @@
-import React, {Component} from 'react';
-import {render} from 'react-dom';
-import {Router, Route, IndexRedirect, browserHistory} from 'react-router/es6';
+import React from "react";
+import {render} from "react-dom";
+import {Router, Route, IndexRedirect, browserHistory} from "react-router/es6";
 
-import PlainTextEditor from './tasks/0/PlainTextEditor.js';
-import RichTextEditorWithButton from './tasks/1/RichTextEditorWithButton.js';
-import EditorWithHashtags from './tasks/2/EditorWithHashtags.js';
-import EditorWithMentions from './tasks/3/EditorWithMentions.js';
-import EditorUsingMentionPlugin from './tasks/4/EditorUsingMentionPlugin.js';
+import PlainTextEditor from "./tasks/0/PlainTextEditor.js";
+import RichTextEditorWithButton from "./tasks/1/RichTextEditorWithButton.js";
+import EditorWithHashtags from "./tasks/2/EditorWithHashtags.js";
+import EditorWithMentions from "./tasks/3/EditorWithMentions.js";
+import EditorUsingMentionPlugin from "./tasks/4/EditorUsingMentionPlugin.js";
 
-import PlainTextEditorSolution from './solutions/0/PlainTextEditorSolution.js';
-import RichTextEditorWithButtonSolution from './solutions/1/RichTextEditorWithButtonSolution.js';
-import EditorWithHashtagsSolution from './solutions/2/EditorWithHashtagsSolution.js';
-import EditorWithMentionsSolution from './solutions/3/EditorWithMentionsSolution.js';
-import EditorUsingMentionPluginSolution from './solutions/4/EditorUsingMentionPluginSolution.js';
+import PlainTextEditorSolution from "./solutions/0/PlainTextEditorSolution.js";
+import RichTextEditorWithButtonSolution from "./solutions/1/RichTextEditorWithButtonSolution.js";
+import EditorWithHashtagsSolution from "./solutions/2/EditorWithHashtagsSolution.js";
+import EditorWithMentionsSolution from "./solutions/3/EditorWithMentionsSolution.js";
+import EditorUsingMentionPluginSolution from "./solutions/4/EditorUsingMentionPluginSolution.js";
 
-import 'draft-js/dist/Draft.css';
+import "draft-js/dist/Draft.css";
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        {this.props.children}
-      </div>
-    );
-  }
-}
+const App = props => {
+  return (
+    <div>
+      {props.children}
+    </div>
+  );
+};
 
 render((
   <Router history={browserHistory}>

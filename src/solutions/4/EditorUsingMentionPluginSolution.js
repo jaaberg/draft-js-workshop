@@ -47,7 +47,7 @@ class EditorUsingMentionPlugin extends Component {
           <Editor
             editorState={this.state.editorState}
             onChange={this.handleEditorStateChange}
-            plugins={[mentionPlugin]}/>
+            plugins={[mentionPlugin]} />
         </div>
       </div>
     );

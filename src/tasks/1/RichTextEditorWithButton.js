@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {Editor, EditorState, RichUtils} from 'draft-js';
 
 import styles from '../../shared/editor-styles';
@@ -10,7 +10,10 @@ class PlainTextEditor extends Component {
 
   handleEditorStateChange = (editorState) => this.setState({editorState});
 
-  logState = () => console.log(this.state.editorState.toJS());
+  logState = (e) => {
+    e.preventDefault();
+    console.log(this.state.editorState.toJS());
+  };
 
   render() {
     return (
@@ -22,6 +25,11 @@ class PlainTextEditor extends Component {
             ref="editor"
             placeholder='Write me something...' />
         </div>
+        <input
+          onMouseDown={this.logState}
+          style={styles.button}
+          type="button"
+          value="Log State" />
       </div>
     );
   }

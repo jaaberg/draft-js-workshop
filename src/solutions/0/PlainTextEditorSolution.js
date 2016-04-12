@@ -8,7 +8,10 @@ class PlainTextEditor extends Component {
     editorState: EditorState.createEmpty()
   };
 
-  logState = () => console.log(this.state.editorState.toJS());
+  logState = (e) => {
+    e.preventDefault();
+    console.log(this.state.editorState.toJS());
+  };
 
   handleEditorStateChange = (editorState) => this.setState({editorState});
 
@@ -23,7 +26,7 @@ class PlainTextEditor extends Component {
             placeholder='Write me something...' />
         </div>
         <input
-          onClick={this.logState}
+          onMouseDown={this.logState}
           style={styles.button}
           type="button"
           value="Log State" />

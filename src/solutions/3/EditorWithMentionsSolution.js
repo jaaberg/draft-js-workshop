@@ -37,8 +37,11 @@ class EditorWithMentions extends Component {
 
   handleEditorStateChange = (editorState) => this.setState({editorState});
 
-  logState = () => console.log(this.state.editorState.toJS());
-
+  logState = (e) => {
+    e.preventDefault();
+    console.log(this.state.editorState.toJS());
+  };
+  
   render() {
     return (
       <div style={sharedStyles.root}>
@@ -51,11 +54,10 @@ class EditorWithMentions extends Component {
           />
         </div>
         <input
-          onClick={this.logState}
+          onMouseDown={this.logState}
           style={sharedStyles.button}
           type="button"
-          value="Log State"
-        />
+          value="Log State" />
       </div>
     );
   }

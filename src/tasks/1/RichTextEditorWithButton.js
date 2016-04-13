@@ -3,6 +3,16 @@ import {Editor, EditorState, RichUtils} from 'draft-js';
 
 import styles from '../../shared/editor-styles';
 
+/*
+ TASK 2
+
+ Create a Rich text editor with Draft.js.
+
+ You've been given the solution from the last task and a button to log the
+ state to console. Tips: RichUtils.handleKeyCommand. The Editor also has a
+ handleKeyCommand property.
+ */
+
 class PlainTextEditor extends Component {
   state = {
     editorState: EditorState.createEmpty()
@@ -10,6 +20,7 @@ class PlainTextEditor extends Component {
 
   handleEditorStateChange = (editorState) => this.setState({editorState});
 
+  // Logs the state to console to get an idea of how the data i stored
   logState = (e) => {
     e.preventDefault();
     console.log(this.state.editorState.toJS());

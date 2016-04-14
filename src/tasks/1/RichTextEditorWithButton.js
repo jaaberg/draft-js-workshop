@@ -4,7 +4,7 @@ import {Editor, EditorState, RichUtils} from 'draft-js';
 import styles from '../../shared/editor-styles';
 
 /*
- TASK 2
+ TASK 1
 
  Create a Rich text editor with Draft.js.
 

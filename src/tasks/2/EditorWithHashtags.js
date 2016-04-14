@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import sharedStyles from '../../shared/editor-styles';
 
 /*
- TASK 3
+ TASK 2
 
  Create an editor that changes the color of hashtags.
 

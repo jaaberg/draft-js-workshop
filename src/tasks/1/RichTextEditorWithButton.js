@@ -33,14 +33,14 @@ class PlainTextEditor extends Component {
           <Editor
             editorState={this.state.editorState}
             onChange={this.handleEditorStateChange}
-            ref="editor"
-            placeholder='Write me something...' />
+            ref='editor'
+            placeholder='Write me something...'/>
         </div>
         <input
           onMouseDown={this.logState}
           style={styles.button}
-          type="button"
-          value="Log State" />
+          type='button'
+          value='Log State'/>
       </div>
     );
   }

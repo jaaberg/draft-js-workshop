@@ -31,22 +31,23 @@ class EditorWithHashtags extends Component {
     e.preventDefault();
     console.log(this.state.editorState.toJS());
   };
-  
+
   render() {
     return (
       <div style={sharedStyles.root}>
         <h1>Editor with hashtags</h1>
+
         <div style={sharedStyles.editor}>
           <Editor
             editorState={this.state.editorState}
             onChange={this.handleEditorStateChange}
-            placeholder='Write me something...' />
+            placeholder='Write me something...'/>
         </div>
         <input
           onMouseDown={this.logState}
           style={sharedStyles.button}
-          type="button"
-          value="Log State" />
+          type='button'
+          value='Log State'/>
       </div>
     );
   }

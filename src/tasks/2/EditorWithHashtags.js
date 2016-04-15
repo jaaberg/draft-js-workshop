@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component} from 'react';
 
 import sharedStyles from '../../shared/editor-styles';
 
@@ -10,7 +10,7 @@ import sharedStyles from '../../shared/editor-styles';
  Hint: When the EditorState.createEmpty accepts a CompositeDecorator as an argument.
  The CompositeDecorator accepts a list of objects containing a strategy, and a
  component to use for this strategy.
-*/
+ */
 
 class EditorWithHashtags extends Component {
   render() {

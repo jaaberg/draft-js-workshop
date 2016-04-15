@@ -21,7 +21,7 @@ class PlainTextEditor extends Component {
 
   handleEditorStateChange = (editorState) => this.setState({editorState});
 
-  handleKeyCommand = (command) =>  {
+  handleKeyCommand = (command) => {
     const {editorState} = this.state;
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
@@ -35,7 +35,7 @@ class PlainTextEditor extends Component {
     e.preventDefault();
     console.log(this.state.editorState.toJS());
   };
-  
+
   render() {
     const editorState = this.state.editorState;
     return (
@@ -43,20 +43,21 @@ class PlainTextEditor extends Component {
         <h1>Rich text editor with button</h1>
         <InlineStyleControls
           editorState={editorState}
-          onToggle={this.toggleInlineStyle} />
+          onToggle={this.toggleInlineStyle}/>
+
         <div style={styles.editor} onClick={this.focusEditor}>
           <Editor
             editorState={editorState}
             handleKeyCommand={this.handleKeyCommand}
             onChange={this.handleEditorStateChange}
-            ref="editor"
-            placeholder='Write me something...' />
+            ref='editor'
+            placeholder='Write me something...'/>
         </div>
         <input
           onMouseDown={this.logState}
           style={styles.button}
-          type="button"
-          value="Log State" />
+          type='button'
+          value='Log State'/>
       </div>
     );
   }
@@ -76,12 +77,12 @@ const InlineStyleControls = (props) => {
   return (
     <div>
       {INLINE_STYLES.map((type, index) =>
-        <StyleButton
-          active={currentStyle.has(type.style)}
-          label={type.label}
-          onToggle={onToggle}
-          style={type.style}
-          key={index} />
+          <StyleButton
+            active={currentStyle.has(type.style)}
+            label={type.label}
+            onToggle={onToggle}
+            style={type.style}
+            key={index}/>
       )}
     </div>
   );

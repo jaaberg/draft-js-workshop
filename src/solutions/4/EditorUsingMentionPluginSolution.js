@@ -1,8 +1,8 @@
-import React, {Component} from "react";
-import Editor from "draft-js-plugins-editor";
-import createMentionPlugin from "draft-js-mention-plugin";
-import {EditorState} from "draft-js";
-import {fromJS} from "immutable";
+import React, {Component} from 'react';
+import Editor from 'draft-js-plugins-editor';
+import createMentionPlugin from 'draft-js-mention-plugin';
+import {EditorState} from 'draft-js';
+import {fromJS} from 'immutable';
 
 import styles from '../../shared/editor-styles';
 import 'draft-js-mention-plugin/lib/plugin.css';
@@ -43,11 +43,12 @@ class EditorUsingMentionPlugin extends Component {
     return (
       <div style={styles.root}>
         <h1>Editor using mention plugin</h1>
+
         <div style={styles.editor}>
           <Editor
             editorState={this.state.editorState}
             onChange={this.handleEditorStateChange}
-            plugins={[mentionPlugin]} />
+            plugins={[mentionPlugin]}/>
         </div>
       </div>
     );

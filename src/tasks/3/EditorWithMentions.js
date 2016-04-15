@@ -1,6 +1,6 @@
-import React, {Component} from "react";
+import React, {Component} from 'react';
 
-import sharedStyles from "../../shared/editor-styles";
+import sharedStyles from '../../shared/editor-styles';
 
 const NAMES = ['Ariana, Andrea, Ada, Eric, Earl, Elm, Linus'];
 /*

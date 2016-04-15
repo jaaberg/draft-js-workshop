@@ -28,7 +28,7 @@ class PlainTextEditor extends Component {
         <input
           onMouseDown={this.logState}
           style={styles.button}
-          type="button"
+          type='button'
           value="Log State" />
       </div>
     );
